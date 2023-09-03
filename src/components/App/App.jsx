@@ -6,10 +6,12 @@ import {
   Text,
   TodoList,
 } from 'components';
+import { Filter } from 'components/Filter/Filter';
 import { useSelector } from 'react-redux';
+import { selectTodos } from 'redux/selectors';
 
 export const App = () => {
-  const todos = useSelector(state => state.todos);
+  const todos = useSelector(selectTodos);
   return (
     <>
       <Header />
@@ -19,7 +21,10 @@ export const App = () => {
           {todos.length === 0 ? (
             <Text textAlign="center">There are no any todos ... </Text>
           ) : (
-            <TodoList />
+            <>
+              <Filter />
+              <TodoList />
+            </>
           )}
         </Container>
       </Section>
